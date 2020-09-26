@@ -15,12 +15,12 @@ class AppBarWidget extends StatelessWidget {
       ),
       pinned: true,
       centerTitle: false,
-      leading: CircleAvatar(
-        backgroundColor: Colors.white,
-        backgroundImage:
-            NetworkImage("https://www.brandchannel.com/wp-content/uploads/2016/05/instagram-new-logo-may-2016.jpg"),
-      ),
-      title: Text("Feed", style: GoogleFonts.aBeeZee(fontSize: 22, fontWeight: FontWeight.bold)),
+      // leading: CircleAvatar(
+      //   backgroundColor: Colors.white,
+      //   backgroundImage:
+      //       NetworkImage("https://www.brandchannel.com/wp-content/uploads/2016/05/instagram-new-logo-may-2016.jpg"),
+      // ),
+      title: Text("Feed", style: GoogleFonts.aBeeZee(fontSize: 26, fontWeight: FontWeight.bold)),
       actions: [
         Padding(
           padding: const EdgeInsets.all(8.0),

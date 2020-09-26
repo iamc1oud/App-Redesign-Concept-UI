@@ -14,6 +14,9 @@ class _AppState extends State<App> {
       body: CustomScrollView(
         slivers: [
           AppBarWidget(),
+          SliverToBoxAdapter(
+            child: Divider(),
+          ),
           SliverList(
             delegate: SliverChildBuilderDelegate((context, index) {
               return UserPostCardWidget(

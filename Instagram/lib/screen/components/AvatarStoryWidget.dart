@@ -13,13 +13,30 @@ class AvatarStoryWidget extends StatelessWidget {
               5,
               (index) {
                 if (index == 0) {
-                  return Container(
-                    width: 50,
-                    child: Center(
-                      child: FittedBox(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Icon(Icons.add), Text("Add")],
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Container(
+                              height: 160,
+                              width: 100,
+                              color: Colors.grey.withOpacity(0.4),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.pinkAccent,
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
