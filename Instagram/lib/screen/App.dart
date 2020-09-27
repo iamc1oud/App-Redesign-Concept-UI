@@ -1,5 +1,6 @@
 import 'package:Instagram/screen/components/AppBarWidget.dart';
 import 'package:Instagram/screen/components/UserPostCardWidget.dart';
+import 'package:ant_icons/ant_icons.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatefulWidget {
@@ -8,6 +9,8 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +36,25 @@ class _AppState extends State<App> {
               );
             }),
           ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedItemColor: Colors.redAccent,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: index,
+        onTap: (currentIndex) {
+          setState(() {
+            index = currentIndex;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(icon: Icon(AntIcons.home_outline), title: Text("Home")),
+          BottomNavigationBarItem(icon: Icon(AntIcons.video_camera_outline), title: Text("Reels")),
+          BottomNavigationBarItem(icon: Icon(AntIcons.plus_circle_outline), title: Text("Add")),
+          BottomNavigationBarItem(icon: Icon(AntIcons.heart_outline), title: Text("Notification")),
+          BottomNavigationBarItem(icon: Icon(AntIcons.user), title: Text("Profile")),
         ],
       ),
     );
