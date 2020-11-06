@@ -1,4 +1,9 @@
+import 'dart:ui';
+
+import 'package:Instagram/screen/components/PostView.dart';
+import 'package:ant_icons/ant_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 
 class UserPostCardWidget extends StatefulWidget {
   final String profileUrl;
@@ -8,6 +13,7 @@ class UserPostCardWidget extends StatefulWidget {
   final int likes;
   final String description;
   final bool isSaved;
+  final List<String> blurHashString;
 
   const UserPostCardWidget(
       {Key key,
@@ -17,7 +23,7 @@ class UserPostCardWidget extends StatefulWidget {
       this.images,
       this.likes,
       this.description,
-      this.isSaved = false})
+      this.isSaved = false, this.blurHashString})
       : super(key: key);
 
   @override
@@ -29,111 +35,108 @@ class _UserPostCardWidgetState extends State<UserPostCardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Align(
+      alignment: Alignment.topCenter,
+      heightFactor: 0.9,
       child: Material(
-        elevation: 5,
-        borderRadius: BorderRadius.circular(10),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        clipBehavior: Clip.antiAlias,
+        elevation: 10,
+        animationDuration: Duration(seconds: 5),
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+        child: InkWell(
+          onDoubleTap: (){
+            print("Like the picture");
+          },
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => PostView(this.widget)));
+          },
+          child: Stack(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: NetworkImage(this.widget.profileUrl),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text(this.widget.name), Text(this.widget.place)],
-                      ),
-                    ],
-                  ),
-                  Icon(Icons.more_vert)
-                ],
-              ),
-              SizedBox(
-                height: 5,
-              ),
               Container(
-                height: 200,
+                height: 450,
                 child: PageView(
                   controller: _pageController,
                   scrollDirection: Axis.horizontal,
-                  children: widget.images
-                      .map((e) => Image(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(e),
-                          ))
+                  children: widget.images.asMap().entries
+                      .map((e) => BlurHash(
+                    imageFit: BoxFit.cover,
+                    hash: widget.blurHashString[e.key],
+                    image: e.value,
+                  ))
                       .toList(),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 2.0),
+              Positioned(
+                top: 20,
+                left: 20,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        Icon(
-                          Icons.favorite,
-                          color: Colors.red,
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(this.widget.profileUrl),
                         ),
                         SizedBox(
                           width: 10,
                         ),
-                        Icon(Icons.chat_bubble_outline),
-                        SizedBox(
-                          width: 10,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [Text(this.widget.name, style: TextStyle(color: Colors.white),), Text(this.widget.place,style: TextStyle(color: Colors.white))],
                         ),
-                        Icon(Icons.arrow_forward_ios)
                       ],
                     ),
-                    Icon(Icons.turned_in_not)
+                    Icon(Icons.more_vert)
                   ],
                 ),
               ),
-              SizedBox(
-                height: 5,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 2.0),
-                child: Text(
-                  widget.likes.toString() + " likes",
-                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Padding(
+              Positioned(
+                left: 10,
+                bottom: 60,
+                child: Padding(
                   padding: const EdgeInsets.only(left: 2.0),
-                  child: RichText(
-                    text: TextSpan(children: [
-                      TextSpan(text: widget.name, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-                      TextSpan(text: " " + widget.description, style: TextStyle(color: Colors.black))
-                    ]),
-                  )),
-              SizedBox(
-                height: 5,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 2.0),
-                child: Text(
-                  "See all 200 comments",
-                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(8.0),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 0.5 , sigmaY: 0.5),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Text(this.widget.likes.toString())
+                                ],
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.8),
+                              borderRadius: BorderRadius.all(Radius.circular(20))
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Icon(AntIcons.message, color: Colors.white,),
+                          SizedBox(
+                            width: 10,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
+              Positioned(
+                right: 10,
+                  bottom: 60,
+                  child: Icon(Icons.turned_in_not, color: Colors.white,))
             ],
           ),
         ),
