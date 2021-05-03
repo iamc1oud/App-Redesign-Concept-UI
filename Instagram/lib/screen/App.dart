@@ -26,7 +26,7 @@ class _AppState extends State<App> {
       name: "iamcloud.dev",
       place: "Vienna",
       profileUrl:
-      "https://cdn.now.howstuffworks.com/media-content/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+      "https://i.pinimg.com/originals/12/1e/59/121e59e3f723000c0fb8619d3501a27f.jpg"
     ),
     UserPostCardWidget(
       description: "Learning flutter",
@@ -39,7 +39,7 @@ class _AppState extends State<App> {
       name: "iamcloud.dev",
       place: "Vienna",
       profileUrl:
-      "https://cdn.now.howstuffworks.com/media-content/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+      "https://i.pinimg.com/originals/1a/31/29/1a3129ad5a3994490a3e6b871071f051.jpg"
     ),
     UserPostCardWidget(
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -53,14 +53,53 @@ class _AppState extends State<App> {
       name: "iamcloud.dev",
       place: "Vienna",
       profileUrl:
-      "https://cdn.now.howstuffworks.com/media-content/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+      "https://www.mikemcgeephotography.com/wp-content/uploads/2018/09/nancy-san_francisco-hypercolor-extreme-colored-gel-artistic-portrait-01-705x471.jpg",
+    ),
+    UserPostCardWidget(
+        description: "Learning flutter",
+        images: [
+          "https://i.pinimg.com/originals/12/1e/59/121e59e3f723000c0fb8619d3501a27f.jpg"
+        ],
+        blurHashString: ["L48gEqI800t:9WX,E#+I4.r]xYo}"],
+        isSaved: false,
+        likes: 19586,
+        name: "iamcloud.dev",
+        place: "Vienna",
+        profileUrl:
+        "https://i.pinimg.com/originals/12/1e/59/121e59e3f723000c0fb8619d3501a27f.jpg"
+    ),
+    UserPostCardWidget(
+        description: "Learning flutter",
+        images: [
+          "https://i.pinimg.com/originals/1a/31/29/1a3129ad5a3994490a3e6b871071f051.jpg"
+        ],
+        blurHashString: ["LaC7sm-=k?R+?wxuR-RiV?WXRPWB"],
+        isSaved: false,
+        likes: 7324,
+        name: "iamcloud.dev",
+        place: "Vienna",
+        profileUrl:
+        "https://i.pinimg.com/originals/1a/31/29/1a3129ad5a3994490a3e6b871071f051.jpg"
+    ),
+    UserPostCardWidget(
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      images: [
+        "https://www.mikemcgeephotography.com/wp-content/uploads/2018/09/nancy-san_francisco-hypercolor-extreme-colored-gel-artistic-portrait-05.jpg",
+        "https://www.mikemcgeephotography.com/wp-content/uploads/2018/09/nancy-san_francisco-hypercolor-extreme-colored-gel-artistic-portrait-01-705x471.jpg"
+      ],
+      blurHashString: ["LeKRju,.}RAI={W-sksqs8oLJBxD","LNHveLIr-4}n=woJJ7s.5l\$\$j^I="],
+      isSaved: false,
+      likes: 22340,
+      name: "iamcloud.dev",
+      place: "Vienna",
+      profileUrl:
+      "https://www.mikemcgeephotography.com/wp-content/uploads/2018/09/nancy-san_francisco-hypercolor-extreme-colored-gel-artistic-portrait-01-705x471.jpg",
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     response.addAll([
-
     ]);
     return Scaffold(
       body: CustomScrollView(

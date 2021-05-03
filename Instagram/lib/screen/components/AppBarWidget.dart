@@ -14,6 +14,7 @@ class AppBarWidget extends StatelessWidget {
         padding: const EdgeInsets.only(top: 80.0),
         child: AvatarStoryWidget(),
       ),
+      leading: Icon(AntIcons.setting_outline, color: Colors.black,),
       pinned: false,
       centerTitle: true,
       title: Text("Feed", style: GoogleFonts.pacifico(fontSize: 26)),

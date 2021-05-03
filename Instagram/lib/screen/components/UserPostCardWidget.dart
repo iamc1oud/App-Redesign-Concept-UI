@@ -40,7 +40,8 @@ class _UserPostCardWidgetState extends State<UserPostCardWidget> {
       heightFactor: 0.9,
       child: Material(
         clipBehavior: Clip.antiAlias,
-        elevation: 10,
+        elevation: 100,
+        type: MaterialType.transparency,
         animationDuration: Duration(seconds: 5),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
         child: InkWell(
@@ -53,7 +54,7 @@ class _UserPostCardWidgetState extends State<UserPostCardWidget> {
           child: Stack(
             children: [
               Container(
-                height: 450,
+                height: MediaQuery.of(context).size.height*0.65,
                 child: PageView(
                   controller: _pageController,
                   scrollDirection: Axis.horizontal,
@@ -90,8 +91,8 @@ class _UserPostCardWidgetState extends State<UserPostCardWidget> {
                 ),
               ),
               Positioned(
-                left: 10,
-                bottom: 60,
+                left: 10, 
+                bottom: 80,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 2.0),
                   child: Row(
@@ -102,18 +103,15 @@ class _UserPostCardWidgetState extends State<UserPostCardWidget> {
                         children: [
                           Container(
                             padding: EdgeInsets.all(8.0),
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 0.5 , sigmaY: 0.5),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.favorite,
-                                    color: Colors.red,
-                                  ),
-                                  SizedBox(width: 5,),
-                                  Text(this.widget.likes.toString())
-                                ],
-                              ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                ),
+                                SizedBox(width: 5,),
+                                Text(this.widget.likes.toString())
+                              ],
                             ),
                             decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.8),
